@@ -19,10 +19,8 @@ const Header = () => {
 
   const navLinks = [
     { name: "Acasă", href: "/" },
-    { name: "Despre noi", href: "/despre-noi" },
     { name: "Servicii", href: "/servicii" },
-    { name: "Fotovoltaice", href: "/fotovoltaice" },
-    { name: "Contact", href: "/contact" },
+    { name: "Despre noi", href: "/despre-noi" },
   ];
 
   return (
@@ -75,7 +73,7 @@ const Header = () => {
             href="/contact"
             className="bg-amber-500 hover:bg-amber-600 text-white px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-lg shadow-amber-500/25"
           >
-            Solicită Audit
+            Contact
           </Link>
         </nav>
 
@@ -118,7 +116,7 @@ const Header = () => {
             onClick={() => setIsMenuOpen(false)}
             className="bg-amber-500 text-white text-center py-4 rounded-xl shadow-lg"
           >
-            Solicită Audit
+            Contact
           </Link>
         </div>
       </div>
