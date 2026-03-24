@@ -20,6 +20,7 @@ const Header = () => {
   const navLinks = [
     { name: "Acasă", href: "/" },
     { name: "Servicii", href: "/servicii" },
+    { name: "Proiecte", href: "/proiecte" },
     { name: "Despre noi", href: "/despre-noi" },
   ];
 

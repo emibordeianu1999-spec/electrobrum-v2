@@ -96,7 +96,7 @@ export default function ServicesPage() {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-500 text-sm font-bold mb-6 border border-amber-500/20">
               Soluții Complete pentru Energie Solară
             </div>
-            <h1 className="text-5xl md:text-7xl font-black mb-8 leading-[1.1] tracking-tighter">
+            <h1 className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white mb-8 leading-[1.1] tracking-tighter">
               Servicii Profesionale de{" "}
               <span className="text-amber-500">Energie Verde</span>
             </h1>

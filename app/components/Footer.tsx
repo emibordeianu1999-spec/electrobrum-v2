@@ -64,18 +64,10 @@ const Footer = () => {
               </li>
               <li>
                 <Link
-                  href="/fotovoltaice"
+                  href="/proiecte"
                   className="hover:text-gray-900 dark:hover:text-white transition-colors"
                 >
-                  Sisteme Fotovoltaice
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/cariere"
-                  className="hover:text-gray-900 dark:hover:text-white transition-colors"
-                >
-                  Cariere
+                  Proiecte
                 </Link>
               </li>
             </ul>
@@ -89,34 +81,10 @@ const Footer = () => {
             <ul className="space-y-4 text-sm">
               <li>
                 <Link
-                  href="/intrebari-frecvente"
+                  href="/contact"
                   className="hover:text-gray-900 dark:hover:text-white transition-colors"
                 >
-                  Întrebări frecvente
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/blog"
-                  className="hover:text-gray-900 dark:hover:text-white transition-colors"
-                >
-                  Blog & Știri
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/politica-cookies"
-                  className="hover:text-gray-900 dark:hover:text-white transition-colors"
-                >
-                  Politică Cookies
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/anpc"
-                  className="hover:text-gray-900 dark:hover:text-white transition-colors"
-                >
-                  ANPC
+                  Contact
                 </Link>
               </li>
             </ul>
@@ -149,20 +117,6 @@ const Footer = () => {
             © {new Date().getFullYear()} Electrobrum. Toate drepturile
             rezervate.
           </p>
-          <div className="flex gap-6">
-            <Link
-              href="/termeni"
-              className="hover:text-gray-900 dark:hover:text-white transition-colors"
-            >
-              Termeni și Condiții
-            </Link>
-            <Link
-              href="/confidentialitate"
-              className="hover:text-gray-900 dark:hover:text-white transition-colors"
-            >
-              Politică de Confidențialitate
-            </Link>
-          </div>
         </div>
       </div>
     </footer>
