@@ -21,6 +21,7 @@ const Header = () => {
     { name: "Acasă", href: "/" },
     { name: "Servicii", href: "/servicii" },
     { name: "Proiecte", href: "/proiecte" },
+    { name: "Calculator", href: "/calculator" },
     { name: "Despre noi", href: "/despre-noi" },
   ];
 
