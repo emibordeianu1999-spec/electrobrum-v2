@@ -195,9 +195,6 @@ export default function ServicesPage() {
           </div>
 
           <div className="relative">
-            {/* Connection Line (Desktop) */}
-            <div className="hidden lg:block absolute top-1/2 left-0 w-full h-0.5 bg-amber-500/20 -translate-y-1/2 z-0" />
-
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 relative z-10">
               {[
                 {
