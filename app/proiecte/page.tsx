@@ -1,159 +1,324 @@
+"use client";
+
+import { useState } from "react";
 import {
-  BarChart3,
-  Cloud,
-  LayoutGrid,
-  PiggyBank,
-  Recycle,
+  ArrowRight,
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Zap,
   ShieldCheck,
+  BarChart3,
+  Sun,
+  LayoutGrid,
+  Cpu,
+  Battery,
+  Layers,
 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { CONTACT_INFO } from "../config/constants";
+import { projects } from "./data";
 
 export default function ProiectePage() {
-  const projects = [
-    {
-      title: "Sistem fotovoltaic 10.2 kWp",
-      location: "Constanța, jud. Constanța",
-      description:
-        "Sistem fotovoltaic 10.2 kWp, cu 24 panouri fotovoltaice LONGi 425W și invertor hibrid Huawei 10kW. Baterie LUNA 5kW.",
-      imageUrl: "/placeholder.jpg",
-    },
-    {
-      title: "Sistem fotovoltaic 8.5 kWp",
-      location: "Valu lui Traian, jud. Constanța",
-      description:
-        "Sistem fotovoltaic 8.5 kWp, cu 20 panouri fotovoltaice LONGi 425W și invertor hibrid Huawei 8kW. Baterie LUNA 5kW.",
-      imageUrl: "/placeholder.jpg",
-    },
-    {
-      title: "Sistem fotovoltaic 12.75 kWp",
-      location: "Cumpăna, jud. Constanța",
-      description:
-        "Sistem fotovoltaic 12.75 kWp, cu 30 panouri fotovoltaice LONGi 425W și invertor hibrid Huawei 10kW. Baterie LUNA 10kW.",
-      imageUrl: "/placeholder.jpg",
-    },
-    {
-      title: "Sistem fotovoltaic 5.1 kWp",
-      location: "Techirghiol, jud. Constanța",
-      description:
-        "Sistem fotovoltaic 5.1 kWp, cu 12 panouri fotovoltaice LONGi 425W și invertor hibrid Huawei 5kW.",
-      imageUrl: "/placeholder.jpg",
-    },
-    {
-      title: "Sistem fotovoltaic 15.3 kWp",
-      location: "Năvodari, jud. Constanța",
-      description:
-        "Sistem fotovoltaic 15.3 kWp, cu 36 panouri fotovoltaice LONGi 425W și invertor hibrid Huawei 15kW. Baterie LUNA 15kW.",
-      imageUrl: "/placeholder.jpg",
-    },
-    {
-      title: "Sistem fotovoltaic 6.8 kWp",
-      location: "Eforie Nord, jud. Constanța",
-      description:
-        "Sistem fotovoltaic 6.8 kWp, cu 16 panouri fotovoltaice LONGi 425W și invertor hibrid Huawei 6kW.",
-      imageUrl: "/placeholder.jpg",
-    },
+  const [filter, setFilter] = useState("toate");
+
+  const filteredProjects =
+    filter === "toate"
+      ? projects
+      : projects.filter((p) => p.category === filter);
+
+  const filters = [
+    { id: "toate", label: "Toate" },
+    { id: "rezidential", label: "Rezidențial" },
+    { id: "industrial", label: "Industrial" },
   ];
 
   return (
     <div className="bg-white dark:bg-gray-950 transition-colors duration-300">
       <main className="isolate">
-        <div className="relative isolate -z-10">
-          <svg
-            className="absolute inset-x-0 top-0 -z-10 h-[64rem] w-full stroke-gray-200 dark:stroke-gray-800 [mask-image:radial-gradient(32rem_32rem_at_center,white,transparent)]"
-            aria-hidden="true"
-          >
-            <defs>
-              <pattern
-                id="1f932ae7-37de-4c07-a68a-05b952a6f153"
-                width={200}
-                height={200}
-                x="50%"
-                y={-1}
-                patternUnits="userSpaceOnUse"
-              >
-                <path d="M.5 200V.5H200" fill="none" />
-              </pattern>
-            </defs>
-            <svg
-              x="50%"
-              y={-1}
-              className="overflow-visible fill-gray-50 dark:fill-gray-900/50"
-            >
-              <path
-                d="M-200 0h201v201h-201Z M600 0h201v201h-201Z M-400 600h201v201h-201Z M200 800h201v201h-201Z"
-                strokeWidth={0}
-              />
-            </svg>
-            <rect
-              width="100%"
-              height="100%"
-              strokeWidth={0}
-              fill="url(#1f932ae7-37de-4c07-a68a-05b952a6f153)"
-            />
-          </svg>
-          <div
-            className="absolute left-1/2 right-0 top-0 -z-10 -ml-24 transform-gpu overflow-hidden blur-3xl lg:ml-24 xl:ml-48"
-            aria-hidden="true"
-          >
+        {/* Hero Section v2 */}
+        <section className="relative pt-32 pb-20 bg-gray-950 overflow-hidden">
+          <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 bg-gradient-to-b from-amber-500/10 to-transparent" />
             <div
-              className="aspect-[801/1036] w-[50.0625rem] bg-gradient-to-tr from-[#f59e0b] to-[#fbbf24] opacity-30 dark:opacity-20"
+              className="absolute inset-0 opacity-20"
               style={{
-                clipPath:
-                  "polygon(63.1% 29.5%, 100% 17.1%, 76.6% 3.1%, 48.4% 0.1%, 44.6% 4.7%, 54.5% 25.3%, 59.8% 49%, 55.2% 57.8%, 44.4% 57.2%, 27.8% 47.9%, 35.1% 81.5%, 0% 97.7%, 39.2% 78.1%, 43.2% 86.9%, 60.2% 37.8%, 63.1% 29.5%)",
+                backgroundImage:
+                  "radial-gradient(circle at 2px 2px, #f59e0b 1px, transparent 0)",
+                backgroundSize: "40px 40px",
               }}
             />
           </div>
-        </div>
 
-        <div className="mx-auto max-w-7xl px-6 lg:px-8 py-24 sm:py-32">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-4xl font-black tracking-tight text-gray-900 dark:text-white sm:text-6xl uppercase">
-              Portofoliu de Proiecte
-            </h2>
-            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
-              De la sisteme rezidențiale mici la instalații comerciale complexe,
-              fiecare proiect este o dovadă a angajamentului nostru pentru
-              calitate și sustenabilitate.
-            </p>
+          <div className="container mx-auto px-4 relative z-10">
+            <nav className="flex mb-8 justify-center" aria-label="Breadcrumb">
+              <ol className="flex items-center space-x-2 text-sm font-bold uppercase tracking-widest text-gray-500">
+                <li>
+                  <Link
+                    href="/"
+                    className="hover:text-amber-500 transition-colors"
+                  >
+                    Acasă
+                  </Link>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="h-1 w-1 rounded-full bg-gray-700" />
+                  <span className="text-amber-500">Portofoliu</span>
+                </li>
+              </ol>
+            </nav>
+
+            <div className="max-w-4xl mx-auto text-center">
+              <h1 className="text-5xl md:text-8xl font-black text-white leading-tight mb-8 tracking-tighter uppercase italic">
+                Proiectele{" "}
+                <span className="text-amber-500 not-italic">Noastre</span>
+              </h1>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
+                Soluții energetice sustenabile implementate cu precizie. De la
+                case smart la parcuri industriale, transformăm soarele în
+                economie.
+              </p>
+
+              {/* Category Filter - Stacked mobile, row desktop */}
+              <div className="flex flex-wrap justify-center gap-3 mt-12">
+                {filters.map((f) => (
+                  <button
+                    key={f.id}
+                    onClick={() => setFilter(f.id)}
+                    className={`px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest transition-all border-2 ${
+                      filter === f.id
+                        ? "bg-amber-500 border-amber-500 text-white shadow-2xl shadow-amber-500/40 scale-105"
+                        : "bg-white/5 border-white/10 text-gray-400 hover:border-amber-500/50 hover:text-white"
+                    }`}
+                  >
+                    {f.label}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
+        </section>
 
-          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {projects.map((project, index) => (
-              <article
-                key={index}
-                className="flex flex-col items-start justify-between group"
-              >
-                <div className="relative w-full">
-                  <Image
-                    src={project.imageUrl}
-                    alt=""
-                    width={800}
-                    height={600}
-                    className="aspect-[16/9] w-full rounded-2xl bg-gray-100 dark:bg-gray-800 object-cover sm:aspect-[2/1] lg:aspect-[3/2] transition-transform duration-500 group-hover:scale-[1.02]"
-                  />
-                  <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-900/10 dark:ring-white/10" />
-                </div>
-                <div className="max-w-xl">
-                  <div className="group relative">
-                    <h3 className="mt-6 text-xl font-black leading-6 text-gray-900 dark:text-white group-hover:text-amber-500 transition-colors">
-                      <a href="#">
-                        <span className="absolute inset-0" />
-                        {project.title}
-                      </a>
-                    </h3>
-                    <div className="mt-3 flex items-center gap-2 text-sm font-bold text-amber-500 uppercase tracking-wider">
-                      <PiggyBank className="h-4 w-4" />
-                      {project.location}
+        {/* Projects List - One under the other as requested */}
+        <section className="py-24 bg-white dark:bg-gray-950">
+          <div className="container mx-auto px-4">
+            <div className="max-w-5xl mx-auto flex flex-col gap-16 md:gap-24">
+              {filteredProjects.length > 0 ? (
+                filteredProjects.map((project) => (
+                  <article
+                    key={project.id}
+                    className="flex flex-col lg:flex-row bg-gray-50 dark:bg-gray-900/40 rounded-[2.5rem] overflow-hidden border border-gray-100 dark:border-gray-800/50 hover:border-amber-500/30 transition-all duration-500 group"
+                  >
+                    {/* Image Container */}
+                    <Link
+                      href={`/proiecte/${project.id}`}
+                      className="lg:w-[45%] relative aspect-video lg:aspect-auto overflow-hidden cursor-pointer"
+                    >
+                      <Image
+                        src={project.imageUrl}
+                        alt={project.title}
+                        fill
+                        className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                      />
+                      <div className="absolute top-6 left-6 z-10">
+                        <span className="px-5 py-2 bg-amber-500 text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-xl">
+                          {project.category}
+                        </span>
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-gray-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center">
+                        <span className="bg-white text-gray-950 px-6 py-3 rounded-full font-black uppercase tracking-widest text-xs transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                          Vezi Detalii
+                        </span>
+                      </div>
+                    </Link>
+
+                    {/* Content Container */}
+                    <div className="lg:w-[55%] p-8 md:p-12 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center gap-3 text-amber-500 mb-6">
+                          <MapPin className="h-5 w-5" />
+                          <span className="text-sm font-black uppercase tracking-widest">
+                            {project.location}
+                          </span>
+                        </div>
+
+                        <Link
+                          href={`/proiecte/${project.id}`}
+                          className="block text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-6 leading-tight group-hover:text-amber-500 transition-colors cursor-pointer"
+                        >
+                          {project.title}
+                        </Link>
+
+                        <p className="text-gray-600 dark:text-gray-400 text-lg mb-10 leading-relaxed italic">
+                          "{project.description}"
+                        </p>
+
+                        {/* Tech Specs Grid */}
+                        <div className="grid grid-cols-2 gap-4 md:gap-6">
+                          <div className="flex items-start gap-4 p-4 rounded-3xl bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-800 shadow-sm">
+                            <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0">
+                              <Zap className="h-5 w-5 text-amber-500" />
+                            </div>
+                            <div>
+                              <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">
+                                Putere
+                              </div>
+                              <div className="font-bold text-gray-900 dark:text-white">
+                                {project.stats.power}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="flex items-start gap-4 p-4 rounded-3xl bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-800 shadow-sm">
+                            <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0">
+                              <Layers className="h-5 w-5 text-amber-500" />
+                            </div>
+                            <div>
+                              <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">
+                                Panouri
+                              </div>
+                              <div className="font-bold text-gray-900 dark:text-white truncate">
+                                {project.stats.panels.split(" ")[0]}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="flex items-start gap-4 p-4 rounded-3xl bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-800 shadow-sm">
+                            <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0">
+                              <Cpu className="h-5 w-5 text-amber-500" />
+                            </div>
+                            <div>
+                              <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">
+                                Invertor
+                              </div>
+                              <div className="font-bold text-gray-900 dark:text-white truncate">
+                                {project.stats.inverter.split(" ")[0]}
+                              </div>
+                            </div>
+                          </div>
+
+                          <div className="flex items-start gap-4 p-4 rounded-3xl bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-800 shadow-sm">
+                            <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0">
+                              <Battery className="h-5 w-5 text-amber-500" />
+                            </div>
+                            <div>
+                              <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">
+                                Baterie
+                              </div>
+                              <div className="font-bold text-gray-900 dark:text-white truncate">
+                                {project.stats.battery}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="mt-12 flex items-center justify-between border-t border-gray-100 dark:border-gray-800 pt-8">
+                        <Link
+                          href={`/proiecte/${project.id}`}
+                          className="flex items-center gap-3 text-amber-500 font-black uppercase tracking-widest text-sm hover:gap-5 transition-all"
+                        >
+                          Cere detalii proiect{" "}
+                          <ArrowRight className="h-5 w-5" />
+                        </Link>
+                        <div className="flex gap-1">
+                          <div className="w-8 h-1 bg-amber-500 rounded-full" />
+                          <div className="w-2 h-1 bg-gray-200 dark:bg-gray-800 rounded-full" />
+                          <div className="w-2 h-1 bg-gray-200 dark:bg-gray-800 rounded-full" />
+                        </div>
+                      </div>
                     </div>
-                    <p className="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-400">
-                      {project.description}
-                    </p>
+                  </article>
+                ))
+              ) : (
+                <div className="text-center py-20">
+                  <p className="text-2xl text-gray-500 font-bold">
+                    Nu am găsit proiecte în această categorie.
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* Contact CTA Section v2 - Stacked for better readability */}
+        <section className="py-24 bg-gray-950 text-white relative overflow-hidden">
+          <div className="absolute inset-0 z-0 opacity-20 bg-[url('/grid-pattern.svg')] bg-[length:40px_40px]" />
+
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-20">
+                <h2 className="text-5xl md:text-7xl font-black mb-8 leading-tight tracking-tighter uppercase italic">
+                  Vrei un sistem{" "}
+                  <span className="text-amber-500 not-italic">Asemănător</span>?
+                </h2>
+                <p className="text-xl text-gray-400 mb-12 leading-relaxed max-w-2xl mx-auto">
+                  Fiecare proiect este unic. Contactează-ne astăzi pentru o
+                  evaluare gratuită și află cum poți deveni independent
+                  energetic.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-3 bg-amber-500 hover:bg-amber-600 text-white px-12 py-6 rounded-2xl font-black text-xl transition-all shadow-2xl shadow-amber-500/20"
+                  >
+                    Vreau Ofertă Gratuită <ArrowRight className="h-6 w-6" />
+                  </Link>
+                  <Link
+                    href={`tel:${CONTACT_INFO.phoneFormatted}`}
+                    className="inline-flex items-center justify-center gap-3 bg-white/5 border border-white/10 hover:bg-white/10 text-white px-12 py-6 rounded-2xl font-black text-xl transition-all"
+                  >
+                    Sună Acum <Phone className="h-6 w-6" />
+                  </Link>
+                </div>
+              </div>
+
+              {/* Info Cards - Stacked on desktop as per user request */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="p-10 rounded-[2.5rem] bg-white/5 border border-white/10 backdrop-blur-md">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-14 h-14 rounded-2xl bg-amber-500/20 flex items-center justify-center">
+                      <MapPin className="h-7 w-7 text-amber-500" />
+                    </div>
+                    <h3 className="text-2xl font-black uppercase tracking-tighter">
+                      Sediul nostru
+                    </h3>
+                  </div>
+                  <p className="text-xl text-gray-300 leading-relaxed mb-8">
+                    {CONTACT_INFO.address}
+                  </p>
+                  <div className="flex items-center gap-3 text-amber-500 font-bold uppercase tracking-widest text-sm">
+                    <Clock className="h-5 w-5" />
+                    <span>
+                      {CONTACT_INFO.workingDays}: {CONTACT_INFO.workingHours}
+                    </span>
                   </div>
                 </div>
-              </article>
-            ))}
+
+                <div className="p-10 rounded-[2.5rem] bg-white/5 border border-white/10 backdrop-blur-md">
+                  <div className="flex items-center gap-4 mb-8">
+                    <div className="w-14 h-14 rounded-2xl bg-amber-500/20 flex items-center justify-center">
+                      <Mail className="h-7 w-7 text-amber-500" />
+                    </div>
+                    <h3 className="text-2xl font-black uppercase tracking-tighter">
+                      Email & Support
+                    </h3>
+                  </div>
+                  <p className="text-xl text-gray-300 leading-relaxed mb-8">
+                    {CONTACT_INFO.email}
+                  </p>
+                  <div className="flex items-center gap-3 text-amber-500 font-bold uppercase tracking-widest text-sm">
+                    <Phone className="h-5 w-5" />
+                    <span>{CONTACT_INFO.phone}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </section>
       </main>
     </div>
   );
