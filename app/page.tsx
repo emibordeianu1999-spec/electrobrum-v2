@@ -29,13 +29,13 @@ export default function Page(): React.ReactElement {
         />
         <div className="absolute top-0 right-0 w-1/2 h-full bg-amber-500/5 dark:bg-amber-500/10 skew-x-12 translate-x-1/4 pointer-events-none" />
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="mx-auto mt-2 sm:mt-12 px-4 relative z-10">
           <div className="max-w-4xl">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-sm font-bold mb-8 animate-fade-in">
               <Zap className="h-4 w-4" />
               <span>Instalator Aprobat AFM Casa Verde</span>
             </div>
-            <h1 className="text-6xl md:text-8xl font-black text-gray-900 dark:text-white leading-[0.95] mb-8 tracking-tighter">
+            <h1 className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white leading-[0.95] mb-8 tracking-tighter">
               Soluții Fotovoltaice <br />
               <span className="text-amber-500">Performante</span> <br />
               nu doar Instalate.
@@ -47,16 +47,16 @@ export default function Page(): React.ReactElement {
             </p>
             <div className="flex flex-col sm:flex-row gap-5">
               <Link
-                href="/calcul-sistem"
+                href="/calculator"
                 className="inline-flex items-center justify-center gap-3 bg-amber-500 hover:bg-amber-600 text-white px-10 py-5 rounded-2xl font-black text-xl transition-all shadow-2xl shadow-amber-500/30 hover:-translate-y-1"
               >
                 Calculează-ți Sistemul <ArrowRight className="h-6 w-6" />
               </Link>
               <Link
-                href="/audit"
+                href="/contact"
                 className="inline-flex items-center justify-center gap-3 bg-white dark:bg-gray-900 border-2 border-gray-100 dark:border-gray-800 hover:border-amber-500/50 text-gray-900 dark:text-white px-10 py-5 rounded-2xl font-black text-xl transition-all hover:bg-gray-50 dark:hover:bg-gray-800"
               >
-                Solicită Audit Gratuit
+                Solicită ofertă
               </Link>
             </div>
           </div>
@@ -64,9 +64,9 @@ export default function Page(): React.ReactElement {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-white dark:bg-gray-950 border-y border-gray-100 dark:border-gray-900">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12">
+      <section className="w-[98%] sm:w-[90%] mx-auto mt-8 py-20 bg-white dark:bg-gray-950 border-y border-gray-100 dark:border-gray-900">
+        <div className="mx-auto px-2 sm:px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 sm:gap-12">
             {[
               { label: "Sisteme Finalizate", value: "300+" },
               { label: "Putere Instalată", value: "3MW+" },
@@ -134,7 +134,7 @@ export default function Page(): React.ReactElement {
       </section>
 
       {/* Issues Section */}
-      <section className="py-24 bg-white dark:bg-gray-950">
+      <section className="w-full sm:w-[98%] mx-auto py-24 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="lg:w-1/2">
@@ -163,7 +163,7 @@ export default function Page(): React.ReactElement {
                 ))}
               </ul>
               <Link
-                href="/audit"
+                href="/contact"
                 className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white px-8 py-4 rounded-xl font-bold transition-all"
               >
                 Solicită Audit & Optimizare <ArrowRight className="h-5 w-5" />
@@ -480,7 +480,7 @@ export default function Page(): React.ReactElement {
                   </div>
                 </div>
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-amber-500 text-white p-6 rounded-2xl shadow-xl hidden md:block">
+              <div className="absolute -bottom-21 left-16 bg-amber-500 text-white p-6 rounded-2xl shadow-xl hidden md:block">
                 <div className="text-xs font-bold opacity-80 uppercase mb-1">
                   Uptime
                 </div>
@@ -529,7 +529,7 @@ export default function Page(): React.ReactElement {
                 ))}
               </div>
             </div>
-            <div className="lg:w-1/2 order-1 lg:order-2">
+            <div className="w-[95%] lg:w-1/2 order-1 lg:order-2">
               <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight">
                 Soluția completă pentru energie: <br />
                 Electrobrum + YellowGrid
@@ -543,10 +543,10 @@ export default function Page(): React.ReactElement {
                 <div className="text-3xl font-black tracking-tighter">
                   ELECTROBRUM
                 </div>
-                <div className="text-2xl font-light opacity-50">+</div>
+                {/* <div className="text-2xl font-light opacity-50">+</div>
                 <div className="text-3xl font-black tracking-tighter">
                   YELLOWGRID
-                </div>
+                </div> */}
               </div>
               <ul className="space-y-4">
                 {[
@@ -710,9 +710,9 @@ export default function Page(): React.ReactElement {
       </section>
 
       {/* Featured Projects Section */}
-      <section className="py-24 bg-gray-50 dark:bg-gray-900/50">
+      <section className="w-full sm:w-[98%] mx-auto py-24 bg-gray-50 dark:bg-gray-900/50">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 sm:gap-4">
             <div className="max-w-2xl text-left">
               <h2 className="text-3xl md:text-5xl font-black mb-6">
                 Proiecte care produc energie <br />
@@ -888,10 +888,10 @@ export default function Page(): React.ReactElement {
                 q: "Cât durează instalarea unui sistem fotovoltaic?",
                 a: "Instalarea propriu-zisă durează de obicei 1-2 zile pentru un sistem rezidențial standard. Întregul proces, incluzând avizele și dosarul de prosumator, poate dura între 4 și 8 săptămâni.",
               },
-              {
-                q: "Ce se întâmplă dacă panourile produc mai multă energie decât consum?",
-                a: "Surplusul de energie este injectat în rețea. Prin parteneriatul nostru cu YellowGrid, acest surplus este compensat pe factura ta, ajutându-te să reduci costurile în perioadele cu producție scăzută.",
-              },
+              // {
+              //   q: "Ce se întâmplă dacă panourile produc mai multă energie decât consum?",
+              //   a: "Surplusul de energie este injectat în rețea. Prin parteneriatul nostru cu YellowGrid, acest surplus este compensat pe factura ta, ajutându-te să reduci costurile în perioadele cu producție scăzută.",
+              // },
               {
                 q: "Este necesară curățarea periodică a panourilor?",
                 a: "Da, pentru un randament maxim recomandăm curățarea panourilor de 1-2 ori pe an, în funcție de zona în care locuiești. De asemenea, oferim servicii de mentenanță preventivă care includ această operațiune.",
@@ -970,7 +970,7 @@ export default function Page(): React.ReactElement {
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Link
-              href="/calcul-sistem"
+              href="/calculator"
               className="bg-white text-amber-500 px-10 py-5 rounded-2xl font-black text-xl hover:bg-gray-100 transition-all shadow-2xl"
             >
               Calculează ROI

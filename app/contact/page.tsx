@@ -11,6 +11,7 @@ import {
   Clock,
   ArrowRight,
 } from "lucide-react";
+import { CONTACT_INFO } from "../config/constants";
 
 export default function ContactPage() {
   return (
@@ -125,14 +126,14 @@ export default function ContactPage() {
                     type="submit"
                     className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white px-10 py-5 rounded-2xl font-black text-xl transition-all shadow-xl shadow-amber-500/20"
                   >
-                    Trimite Mesajul <Send className="h-5 w-5" />
+                    Trimite Mesajul <Send className="h-8 w-8" />
                   </button>
                 </form>
               </div>
             </div>
 
             {/* Contact Details */}
-            <div className="lg:w-1/3 space-y-8">
+            <div className="w-[99%] sm:w-[93%] mx-auto lg:w-1/3 space-y-8">
               <div className="p-8 rounded-3xl border border-gray-100 dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm">
                 <h3 className="text-xl font-black mb-6 text-gray-900 dark:text-white uppercase tracking-tighter">
                   Informații Contact
@@ -143,11 +144,11 @@ export default function ContactPage() {
                       <Phone className="h-6 w-6" />
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-gray-400 uppercase">
-                        Suna-ne
+                      <div className="pt-1 text-xs font-bold text-gray-400 uppercase">
+                        Sună-ne
                       </div>
-                      <div className="text-lg font-bold text-gray-900 dark:text-white">
-                        +40 700 000 000
+                      <div className="pt-1 text-md sm:text-lg font-bold text-gray-900 dark:text-white">
+                        {CONTACT_INFO.phone}
                       </div>
                     </div>
                   </div>
@@ -156,11 +157,11 @@ export default function ContactPage() {
                       <Mail className="h-6 w-6" />
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-gray-400 uppercase">
+                      <div className="pt-1 text-xs font-bold text-gray-400 uppercase">
                         Email
                       </div>
-                      <div className="text-lg font-bold text-gray-900 dark:text-white">
-                        office@electrobrum.ro
+                      <div className="pt-1 text-md sm:text-lg font-bold text-gray-900 dark:text-white break-all">
+                        {CONTACT_INFO.email}
                       </div>
                     </div>
                   </div>
@@ -169,11 +170,11 @@ export default function ContactPage() {
                       <MapPin className="h-6 w-6" />
                     </div>
                     <div>
-                      <div className="text-xs font-bold text-gray-400 uppercase">
+                      <div className="pt-1 text-xs font-bold text-gray-400 uppercase">
                         Locație
                       </div>
-                      <div className="text-lg font-bold text-gray-900 dark:text-white">
-                        București, România
+                      <div className="pt-1 text-md sm:text-lg font-bold text-gray-900 dark:text-white">
+                        {CONTACT_INFO.address}
                       </div>
                     </div>
                   </div>
@@ -190,14 +191,16 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <div className="text-lg font-bold text-gray-900 dark:text-white">
-                      Luni - Vineri
+                      {CONTACT_INFO.workingDays}
                     </div>
-                    <div className="text-sm text-gray-500">09:00 - 18:00</div>
+                    <div className="text-sm text-gray-500">
+                      {CONTACT_INFO.workingHours}
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className="p-8 rounded-3xl bg-amber-500 text-white shadow-xl shadow-amber-500/20">
+              {/* <div className="p-8 rounded-3xl bg-amber-500 text-white shadow-xl shadow-amber-500/20">
                 <MessageSquare className="h-10 w-10 mb-6 opacity-50" />
                 <h3 className="text-2xl font-black mb-4 tracking-tighter leading-tight">
                   Suport Tehnic Non-Stop pentru clienți
@@ -212,7 +215,7 @@ export default function ContactPage() {
                 >
                   Acces Portal Suport <ArrowRight className="h-4 w-4" />
                 </Link>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -228,6 +231,26 @@ export default function ContactPage() {
             </div>
           </div>
         </div>
+        <a
+          href="https://www.google.com/maps/search/?api=1&query={{ $location['coords'][0] }},{{ $location['coords'][1] }}"
+          target="_blank"
+          className="mt-4 inline-flex items-center text-sm font-medium text-secondary hover:text-accent transition-colors duration-300"
+        >
+          Vezi pe Google Maps
+          <svg
+            className="w-4 h-4 ml-1.5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+            ></path>
+          </svg>
+        </a>
       </section>
     </div>
   );

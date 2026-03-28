@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
+import { CONTACT_INFO } from "../config/constants";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -39,14 +40,14 @@ const Header = () => {
           <div className="container mx-auto px-4 flex justify-between text-sm text-gray-600 dark:text-gray-400">
             <div className="flex space-x-6">
               <span className="flex items-center gap-1">
-                <Phone className="h-3 w-3" /> +40 700 000 000
+                <Phone className="h-3 w-3" /> {CONTACT_INFO.phone}
               </span>
               <span className="flex items-center gap-1">
-                <Mail className="h-3 w-3" /> office@electrobrum.ro
+                <Mail className="h-3 w-3" /> {CONTACT_INFO.email}
               </span>
             </div>
             <span className="flex items-center gap-1">
-              <MapPin className="h-3 w-3" /> România
+              <MapPin className="h-3 w-3" /> {CONTACT_INFO.address}
             </span>
           </div>
         </div>
