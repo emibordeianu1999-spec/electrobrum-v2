@@ -3,7 +3,6 @@ import {
   Gem,
   Lightbulb,
   Handshake,
-  ShieldCheck,
   Calendar,
   Users,
 } from "lucide-react";
@@ -59,7 +58,7 @@ export default function DespreNoi() {
     <main>
       {/* Hero Section */}
       <section className="py-20 bg-gray-50 dark:bg-gray-900 text-center">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl sm:mt-10 mx-auto px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white">
             Despre Noi
           </h1>

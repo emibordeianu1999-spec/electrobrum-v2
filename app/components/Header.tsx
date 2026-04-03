@@ -11,6 +11,17 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
@@ -99,28 +110,69 @@ const Header = () => {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-white dark:bg-gray-950 z-40 transition-transform duration-300 ease-in-out transform ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        } lg:hidden pt-24 px-6`}
+        className={`fixed inset-0 w-full h-screen bg-white dark:bg-gray-950 z-[9999] lg:hidden flex flex-col transition-all duration-300 ${
+          isMenuOpen
+            ? "opacity-100 pointer-events-auto translate-x-0"
+            : "opacity-0 pointer-events-none translate-x-full"
+        }`}
       >
-        <div className="flex flex-col space-y-6 text-xl font-semibold">
-          {navLinks.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              onClick={() => setIsMenuOpen(false)}
-              className="border-b border-gray-100 dark:border-gray-900 pb-4"
-            >
-              {link.name}
-            </Link>
-          ))}
-          <Link
-            href="/contact"
+        {/* Mobile Menu Top Bar */}
+        <div className="flex justify-between items-center px-4 py-6 border-b border-gray-100 dark:border-gray-900 bg-white dark:bg-gray-950">
+          <div className="text-2xl font-black tracking-tighter text-amber-500">
+            ELECTROBRUM
+          </div>
+          <button
             onClick={() => setIsMenuOpen(false)}
-            className="bg-amber-500 text-white text-center py-4 rounded-xl shadow-lg"
+            className="p-2 text-gray-900 dark:text-white"
           >
-            Contact
-          </Link>
+            <X className="h-8 w-8" />
+          </button>
+        </div>
+
+        <div className="flex-grow overflow-y-auto px-6 py-8 flex flex-col bg-white dark:bg-gray-950">
+          <div className="flex flex-col space-y-6 text-2xl font-black uppercase tracking-tighter">
+            {navLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                onClick={() => setIsMenuOpen(false)}
+                className="pb-4 border-b border-gray-50 dark:border-gray-900 text-gray-900 dark:text-white active:text-amber-500 transition-colors"
+              >
+                {link.name}
+              </Link>
+            ))}
+            <Link
+              href="/contact"
+              onClick={() => setIsMenuOpen(false)}
+              className="bg-amber-500 text-white text-center py-5 rounded-2xl shadow-xl font-black uppercase tracking-widest mt-4"
+            >
+              Contact
+            </Link>
+          </div>
+
+          {/* Mobile Menu Footer Info */}
+          <div className="mt-auto pb-12 space-y-6 pt-12">
+            <div className="flex flex-col gap-6">
+              <a
+                href={`tel:${CONTACT_INFO.phoneFormatted}`}
+                className="flex items-center gap-4 text-gray-600 dark:text-gray-300 font-bold text-lg"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center shrink-0">
+                  <Phone className="h-6 w-6 text-amber-500" />
+                </div>
+                {CONTACT_INFO.phone}
+              </a>
+              <a
+                href={`mailto:${CONTACT_INFO.email}`}
+                className="flex items-center gap-4 text-gray-600 dark:text-gray-300 font-bold text-lg"
+              >
+                <div className="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center shrink-0">
+                  <Mail className="h-6 w-6 text-amber-500" />
+                </div>
+                <span className="break-all">{CONTACT_INFO.email}</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </header>

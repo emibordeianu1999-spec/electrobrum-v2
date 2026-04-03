@@ -1,16 +1,6 @@
 "use client";
 
-import React from "react";
-import Link from "next/link";
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Send,
-  MessageSquare,
-  Clock,
-  ArrowRight,
-} from "lucide-react";
+import { Phone, Mail, MapPin, Send, Clock } from "lucide-react";
 import { CONTACT_INFO } from "../config/constants";
 
 export default function ContactPage() {
@@ -19,7 +9,7 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="relative py-24 bg-gray-50 dark:bg-gray-900/50 overflow-hidden">
         <div className="absolute inset-0 z-0 bg-gradient-to-br from-amber-50/50 to-white dark:from-gray-950 dark:to-gray-900" />
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container sm:mt-10 mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
             <h1 className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white leading-[1.1] mb-6 tracking-tighter">
               Contactează <span className="text-amber-500">Echipa</span>
@@ -221,36 +211,28 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Simple Map Placeholder */}
-      <section className="h-[400px] bg-gray-200 dark:bg-gray-800 relative overflow-hidden">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <MapPin className="h-12 w-12 text-amber-500 mx-auto mb-4 animate-bounce" />
-            <div className="text-xl font-black text-gray-400 uppercase tracking-widest">
-              Harta Locație
-            </div>
-          </div>
-        </div>
-        <a
-          href="https://www.google.com/maps/search/?api=1&query={{ $location['coords'][0] }},{{ $location['coords'][1] }}"
-          target="_blank"
-          className="mt-4 inline-flex items-center text-sm font-medium text-secondary hover:text-accent transition-colors duration-300"
-        >
-          Vezi pe Google Maps
-          <svg
-            className="w-4 h-4 ml-1.5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+      {/* Map Section */}
+      <section className="h-[500px] w-full relative overflow-hidden border-t border-gray-100 dark:border-gray-800">
+        <iframe
+          src="https://maps.google.com/maps?q=Strada%20Pacii%202A%2C%20Comanesti%2C%20Bacau&t=&z=15&ie=UTF8&iwloc=&output=embed"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          className="dark:invert dark:hue-rotate-180 dark:brightness-90 dark:contrast-125"
+        ></iframe>
+        <div className="absolute bottom-8 right-8 z-10">
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=Strada%20Pacii%202A%2C%20Comanesti%2C%20Bacau"
+            target="_blank"
+            className="inline-flex items-center gap-2 bg-white dark:bg-gray-900 text-gray-900 dark:text-white px-6 py-3 rounded-xl font-bold shadow-2xl hover:bg-amber-500 hover:text-white dark:hover:bg-amber-500 transition-all border border-gray-100 dark:border-gray-800"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-            ></path>
-          </svg>
-        </a>
+            <MapPin className="h-5 w-5 text-amber-500" />
+            Navighează către sediu
+          </a>
+        </div>
       </section>
     </div>
   );

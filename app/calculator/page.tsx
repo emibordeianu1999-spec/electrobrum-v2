@@ -458,9 +458,14 @@ export default function CalculatorPage() {
                       </p>
                     </div>
 
-                    <Button className="w-full bg-amber-500 hover:bg-amber-600 text-white font-black py-8 rounded-2xl text-xl shadow-xl shadow-amber-500/20 mt-8 group">
-                      Obține Ofertă{" "}
-                      <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                    <Button
+                      asChild
+                      className="w-full bg-amber-500 hover:bg-amber-600 text-white font-black py-8 rounded-2xl text-xl shadow-xl shadow-amber-500/20 mt-8 group"
+                    >
+                      <Link href="/contact">
+                        Obține Ofertă{" "}
+                        <ArrowRight className="ml-2 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                      </Link>
                     </Button>
                   </div>
                 </div>

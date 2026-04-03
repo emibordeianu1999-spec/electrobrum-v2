@@ -8,10 +8,6 @@ import {
   MapPin,
   Clock,
   Zap,
-  ShieldCheck,
-  BarChart3,
-  Sun,
-  LayoutGrid,
   Cpu,
   Battery,
   Layers,
@@ -39,11 +35,11 @@ export default function ProiectePage() {
     <div className="bg-white dark:bg-gray-950 transition-colors duration-300">
       <main className="isolate">
         {/* Hero Section v2 */}
-        <section className="relative pt-32 pb-20 bg-gray-950 overflow-hidden">
+        <section className="relative pt-32 pb-20 bg-gray-50 dark:bg-gray-950 overflow-hidden border-b border-gray-100 dark:border-gray-900">
           <div className="absolute inset-0 z-0">
-            <div className="absolute inset-0 bg-gradient-to-b from-amber-500/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-b from-amber-500/5 dark:from-amber-500/10 to-transparent" />
             <div
-              className="absolute inset-0 opacity-20"
+              className="absolute inset-0 opacity-10 dark:opacity-20"
               style={{
                 backgroundImage:
                   "radial-gradient(circle at 2px 2px, #f59e0b 1px, transparent 0)",
@@ -53,29 +49,12 @@ export default function ProiectePage() {
           </div>
 
           <div className="container mx-auto px-4 relative z-10">
-            <nav className="flex mb-8 justify-center" aria-label="Breadcrumb">
-              <ol className="flex items-center space-x-2 text-sm font-bold uppercase tracking-widest text-gray-500">
-                <li>
-                  <Link
-                    href="/"
-                    className="hover:text-amber-500 transition-colors"
-                  >
-                    Acasă
-                  </Link>
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="h-1 w-1 rounded-full bg-gray-700" />
-                  <span className="text-amber-500">Portofoliu</span>
-                </li>
-              </ol>
-            </nav>
-
             <div className="max-w-4xl mx-auto text-center">
-              <h1 className="text-5xl md:text-8xl font-black text-white leading-tight mb-8 tracking-tighter uppercase italic">
+              <h1 className="text-5xl md:text-8xl font-black text-gray-900 dark:text-white leading-tight mb-8 tracking-tighter uppercase italic">
                 Proiectele{" "}
                 <span className="text-amber-500 not-italic">Noastre</span>
               </h1>
-              <p className="text-xl text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-12 leading-relaxed font-medium">
                 Soluții energetice sustenabile implementate cu precizie. De la
                 case smart la parcuri industriale, transformăm soarele în
                 economie.
@@ -90,7 +69,7 @@ export default function ProiectePage() {
                     className={`px-8 py-4 rounded-2xl font-black text-sm uppercase tracking-widest transition-all border-2 ${
                       filter === f.id
                         ? "bg-amber-500 border-amber-500 text-white shadow-2xl shadow-amber-500/40 scale-105"
-                        : "bg-white/5 border-white/10 text-gray-400 hover:border-amber-500/50 hover:text-white"
+                        : "bg-white dark:bg-white/5 border-gray-100 dark:border-white/10 text-gray-500 dark:text-gray-400 hover:border-amber-500/50 hover:text-gray-900 dark:hover:text-white"
                     }`}
                   >
                     {f.label}
