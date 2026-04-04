@@ -1,9 +1,77 @@
 "use client";
 
-import { Phone, Mail, MapPin, Send, Clock } from "lucide-react";
+import { useState } from "react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Send,
+  Clock,
+  CheckCircle2,
+  AlertCircle,
+} from "lucide-react";
 import { CONTACT_INFO } from "../config/constants";
 
 export default function ContactPage() {
+  const [isSubmitting, setIsMenuSubmitting] = useState(false);
+  const [state, setState] = useState<{
+    status: "idle" | "success" | "error";
+    message: string;
+  }>({ status: "idle", message: "" });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsMenuSubmitting(true);
+    setState({ status: "idle", message: "" });
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      subject: formData.get("subject"),
+      message: formData.get("message"),
+      access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+    };
+
+    try {
+      // Using Web3Forms as a reliable static-friendly solution
+      // The user just needs to get a free access key from web3forms.com
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          ...data,
+          from_name: "Electrobrum Website",
+          to_email: CONTACT_INFO.email,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        setState({
+          status: "success",
+          message:
+            "Mesajul a fost trimis cu succes! Te vom contacta în cel mai scurt timp.",
+        });
+        (e.target as HTMLFormElement).reset();
+      } else {
+        throw new Error(result.message || "Eroare la trimitere.");
+      }
+    } catch (error) {
+      setState({
+        status: "error",
+        message:
+          "A apărut o eroare. Te rugăm să încerci din nou sau să ne suni direct.",
+      });
+    } finally {
+      setIsMenuSubmitting(false);
+    }
+  };
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -33,7 +101,25 @@ export default function ContactPage() {
                 <h2 className="text-3xl font-black mb-8 text-gray-900 dark:text-white">
                   Trimite-ne un mesaj
                 </h2>
-                <form className="space-y-6">
+
+                {state.status !== "idle" && (
+                  <div
+                    className={`mb-8 p-6 rounded-2xl flex items-center gap-4 ${
+                      state.status === "success"
+                        ? "bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400"
+                        : "bg-red-500/10 border border-red-500/20 text-red-600 dark:text-red-400"
+                    }`}
+                  >
+                    {state.status === "success" ? (
+                      <CheckCircle2 className="h-6 w-6" />
+                    ) : (
+                      <AlertCircle className="h-6 w-6" />
+                    )}
+                    <p className="font-bold">{state.message}</p>
+                  </div>
+                )}
+
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="space-y-2">
                       <label
@@ -45,6 +131,8 @@ export default function ContactPage() {
                       <input
                         type="text"
                         id="name"
+                        name="name"
+                        required
                         placeholder="Ex: Popescu Ion"
                         className="w-full px-6 py-4 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition-all"
                       />
@@ -59,6 +147,8 @@ export default function ContactPage() {
                       <input
                         type="email"
                         id="email"
+                        name="email"
+                        required
                         placeholder="Ex: nume@exemplu.ro"
                         className="w-full px-6 py-4 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition-all"
                       />
@@ -75,6 +165,8 @@ export default function ContactPage() {
                       <input
                         type="tel"
                         id="phone"
+                        name="phone"
+                        required
                         placeholder="Ex: 07xx xxx xxx"
                         className="w-full px-6 py-4 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition-all"
                       />
@@ -86,16 +178,34 @@ export default function ContactPage() {
                       >
                         Subiect
                       </label>
-                      <select
-                        id="subject"
-                        className="w-full px-6 py-4 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition-all appearance-none"
-                      >
-                        <option>Cerere Ofertă</option>
-                        <option>Audit Sistem Existent</option>
-                        <option>Suport Tehnic</option>
-                        <option>Parteneriate</option>
-                        <option>Altele</option>
-                      </select>
+                      <div className="relative">
+                        <select
+                          id="subject"
+                          name="subject"
+                          className="w-full px-6 py-4 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition-all appearance-none"
+                        >
+                          <option>Cerere Ofertă</option>
+                          <option>Audit Sistem Existent</option>
+                          <option>Suport Tehnic</option>
+                          <option>Parteneriate</option>
+                          <option>Altele</option>
+                        </select>
+                        <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">
+                          <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              d="M19 9l-7 7-7-7"
+                            ></path>
+                          </svg>
+                        </div>
+                      </div>
                     </div>
                   </div>
                   <div className="space-y-2">
@@ -107,6 +217,8 @@ export default function ContactPage() {
                     </label>
                     <textarea
                       id="message"
+                      name="message"
+                      required
                       rows={6}
                       placeholder="Cum te putem ajuta?"
                       className="w-full px-6 py-4 rounded-xl bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 outline-none transition-all resize-none"
@@ -114,9 +226,11 @@ export default function ContactPage() {
                   </div>
                   <button
                     type="submit"
-                    className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 text-white px-10 py-5 rounded-2xl font-black text-xl transition-all shadow-xl shadow-amber-500/20"
+                    disabled={isSubmitting}
+                    className="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-600 disabled:bg-amber-500/50 disabled:cursor-not-allowed text-white px-10 py-5 rounded-2xl font-black text-xl transition-all shadow-xl shadow-amber-500/20"
                   >
-                    Trimite Mesajul <Send className="h-8 w-8" />
+                    {isSubmitting ? "Se trimite..." : "Trimite Mesajul"}
+                    {!isSubmitting && <Send className="h-8 w-8" />}
                   </button>
                 </form>
               </div>
