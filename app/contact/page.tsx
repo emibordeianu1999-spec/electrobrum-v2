@@ -11,6 +11,7 @@ import {
   AlertCircle,
 } from "lucide-react";
 import { CONTACT_INFO } from "../config/constants";
+import { FAQ_ITEMS } from "../data/home-content";
 
 export default function ContactPage() {
   const [isSubmitting, setIsMenuSubmitting] = useState(false);
@@ -92,7 +93,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Content */}
-      <section className="py-24 bg-white dark:bg-gray-950">
+      <section className="sm:py-24 bg-white dark:bg-gray-950">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-16">
             {/* Contact Form */}
@@ -321,6 +322,50 @@ export default function ContactPage() {
                 </Link>
               </div> */}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 sm:py-24 bg-white dark:bg-gray-950">
+        <div className="container mx-auto px-4">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-5xl font-black mb-6">
+              Întrebări Frecvente
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 text-lg">
+              Tot ce trebuie să știi despre sistemele fotovoltaice și
+              colaborarea cu ELECTROBRUM ENERGY AUTOMATION.
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto space-y-4">
+            {FAQ_ITEMS.map((item, i) => (
+              <details
+                key={i}
+                className="group bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden"
+              >
+                <summary className="flex justify-between items-center p-6 cursor-pointer list-none font-bold text-lg text-gray-900 dark:text-white group-open:bg-amber-500 group-open:text-white transition-all">
+                  {item.q}
+                  <div className="transition-transform group-open:rotate-180">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="m6 9 6 6 6-6" />
+                    </svg>
+                  </div>
+                </summary>
+                <div className="p-6 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-100 dark:border-gray-800">
+                  {item.a}
+                </div>
+              </details>
+            ))}
           </div>
         </div>
       </section>

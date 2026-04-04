@@ -13,7 +13,46 @@ import {
   AlertTriangle,
 } from "lucide-react";
 
+import {
+  STATS,
+  PERFORMANCE_ITEMS,
+  ISSUES_LIST,
+  BENEFIT_CARDS,
+  FIELD_PROBLEMS,
+  ANRE_ROLE_ITEMS,
+  ELECTROBRUM_ROLE_ITEMS,
+  ECOSYSTEM_STEPS,
+  MONITORING_FEATURES,
+  SUPPLY_ECOSYSTEM_BENEFITS,
+  SUPPLY_ECOSYSTEM_BULLETS,
+  STRATEGIC_PARTNERSHIPS,
+  SERVICES_GRID,
+  FEATURED_PROJECTS,
+  PORTFOLIO_GRID,
+  PARTNER_BRANDS,
+  FAQ_ITEMS,
+} from "./data/home-content";
+
 export default function Page(): React.ReactElement {
+  const getIcon = (key: string) => {
+    switch (key) {
+      case "search":
+        return <Search className="h-8 w-8 text-amber-500" />;
+      case "chart":
+        return <LineChart className="h-8 w-8 text-amber-500" />;
+      case "settings":
+        return <Settings className="h-8 w-8 text-amber-500" />;
+      case "shield":
+        return <ShieldCheck className="h-10 w-10 mb-6 text-amber-500" />;
+      case "chart-bar":
+        return <BarChart3 className="h-10 w-10 mb-6 text-amber-500" />;
+      case "zap":
+        return <Zap className="h-8 w-8 text-amber-500" />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
@@ -67,12 +106,7 @@ export default function Page(): React.ReactElement {
       <section className="w-[98%] sm:w-[90%] mx-auto mt-8 py-20 bg-white dark:bg-gray-950 border-y border-gray-100 dark:border-gray-900">
         <div className="mx-auto px-2 sm:px-4">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 sm:gap-12">
-            {[
-              { label: "Sisteme Finalizate", value: "300+" },
-              { label: "Putere Instalată", value: "3MW+" },
-              { label: "Județe Acoperite", value: "10+" },
-              { label: "Garanție Manoperă", value: "5 Ani" },
-            ].map((stat, i) => (
+            {STATS.map((stat, i) => (
               <div
                 key={i}
                 className="flex flex-col items-center lg:items-start"
@@ -103,28 +137,12 @@ export default function Page(): React.ReactElement {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Search className="h-8 w-8 text-amber-500" />,
-                title: "Analiză Consum Real",
-                desc: "Analizăm consumul real și obiectivele energetice înainte de orice proiectare.",
-              },
-              {
-                icon: <LineChart className="h-8 w-8 text-amber-500" />,
-                title: "Monitorizare Continuă",
-                desc: "Monitorizăm parametrii tehnici ai sistemului (invertor, baterii, producție) 24/7.",
-              },
-              {
-                icon: <Settings className="h-8 w-8 text-amber-500" />,
-                title: "Optimizare Activă",
-                desc: "Intervenim pentru optimizarea randamentului și a producției pe baza datelor reale.",
-              },
-            ].map((item, i) => (
+            {PERFORMANCE_ITEMS.map((item, i) => (
               <div
                 key={i}
                 className="bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800"
               >
-                <div className="mb-6">{item.icon}</div>
+                <div className="mb-6">{getIcon(item.iconKey)}</div>
                 <h3 className="text-xl font-bold mb-4">{item.title}</h3>
                 <p className="text-gray-600 dark:text-gray-400">{item.desc}</p>
               </div>
@@ -146,13 +164,7 @@ export default function Page(): React.ReactElement {
                 sub așteptări. Iată problemele frecvente pe care le rezolvăm:
               </p>
               <ul className="space-y-4 mb-10">
-                {[
-                  "Dimensionare după șablon, nu după consum real",
-                  "Setări incomplete ale invertorului sau bateriei",
-                  "Probleme de conectivitate și monitorizare",
-                  "Lipsa mentenanței preventive",
-                  "ROI mai slab din cauza randamentului neoptimizat",
-                ].map((item, i) => (
+                {ISSUES_LIST.map((item, i) => (
                   <li
                     key={i}
                     className="flex items-start gap-3 text-gray-700 dark:text-gray-300"
@@ -170,25 +182,12 @@ export default function Page(): React.ReactElement {
               </Link>
             </div>
             <div className="lg:w-1/2 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {[
-                {
-                  icon: (
-                    <ShieldCheck className="h-10 w-10 mb-6 text-amber-500" />
-                  ),
-                  title: "Garanție Manoperă",
-                  desc: "5 ani garanție pentru manoperă și suport post-instalare.",
-                },
-                {
-                  icon: <BarChart3 className="h-10 w-10 mb-6 text-amber-500" />,
-                  title: "ROI Predictibil",
-                  desc: "Validăm sistemul astfel încât randamentul să fie cel estimat.",
-                },
-              ].map((card, i) => (
+              {BENEFIT_CARDS.map((card, i) => (
                 <div
                   key={i}
                   className="bg-gray-50 dark:bg-gray-900/50 p-8 rounded-2xl border border-gray-100 dark:border-gray-800"
                 >
-                  {card.icon}
+                  {getIcon(card.iconKey)}
                   <h3 className="text-xl font-bold mb-2">{card.title}</h3>
                   <p className="text-gray-500 dark:text-gray-400 text-sm">
                     {card.desc}
@@ -214,38 +213,7 @@ export default function Page(): React.ReactElement {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                id: "A",
-                title: "Desfacerea șuruburilor",
-                desc: "La întrerupătoarele automate din cauza vibrațiilor și dilatării.",
-              },
-              {
-                id: "B",
-                title: "Lipsa împământării",
-                desc: "O problemă critică de siguranță pe care o întâlnim surprinzător de des.",
-              },
-              {
-                id: "C",
-                title: "Conexiune internet slabă",
-                desc: "Împiedică monitorizarea corectă și alertarea în timp real.",
-              },
-              {
-                id: "D",
-                title: "Cabluri AC neprotejate",
-                desc: "Lipsa copexurilor metalice sau a protecțiilor UV necesare.",
-              },
-              {
-                id: "E",
-                title: "Lipsa descărcătoare DC & AC",
-                desc: "Sistemul este vulnerabil la supratensiuni și descărcări electrice.",
-              },
-              {
-                id: "F",
-                title: "Configurări Invertor",
-                desc: "Setări de rețea sau de baterie care limitează producția utilă.",
-              },
-            ].map((item, i) => (
+            {FIELD_PROBLEMS.map((item, i) => (
               <div
                 key={i}
                 className="flex gap-4 p-6 bg-white dark:bg-gray-900 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-800"
@@ -289,11 +257,7 @@ export default function Page(): React.ReactElement {
                 racordarea. Sunt esențiali pentru execuție.
               </p>
               <ul className="space-y-4">
-                {[
-                  "Execuție instalație electrică",
-                  "Racordare la rețea",
-                  "Dosare tehnice ANRE",
-                ].map((item, i) => (
+                {ANRE_ROLE_ITEMS.map((item, i) => (
                   <li
                     key={i}
                     className="flex items-center gap-3 text-gray-700 dark:text-gray-300 font-medium"
@@ -315,12 +279,7 @@ export default function Page(): React.ReactElement {
                 instalatori, monitorizare și optimizare continuă.
               </p>
               <ul className="space-y-4">
-                {[
-                  "Proiectare & dimensionare pe date reale",
-                  "Coordonare instalatori parteneri",
-                  "Monitorizare & optimizare continuă",
-                  "Garanție manoperă 5 ani",
-                ].map((item, i) => (
+                {ELECTROBRUM_ROLE_ITEMS.map((item, i) => (
                   <li
                     key={i}
                     className="flex items-center gap-3 text-gray-900 dark:text-white font-bold"
@@ -347,29 +306,7 @@ export default function Page(): React.ReactElement {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative">
             {/* Connection Line (Desktop) */}
             <div className="hidden lg:block absolute top-12 left-0 w-full h-0.5 bg-gradient-to-r from-amber-500/0 via-amber-500/50 to-amber-500/0 z-0" />
-
-            {[
-              {
-                step: "1",
-                title: "Proiectare",
-                desc: "ELECTROBRUM ENERGY AUTOMATION dimensionează sistemul pe baza consumului tău real.",
-              },
-              {
-                step: "2",
-                title: "Instalare",
-                desc: "Instalatori parteneri autorizați execută și racordează sistemul.",
-              },
-              {
-                step: "3",
-                title: "Monitorizare",
-                desc: "Sistemul este conectat la dashboard-ul nostru de control.",
-              },
-              {
-                step: "4",
-                title: "Optimizare",
-                desc: "Intervenim periodic pentru randament maxim și ROI accelerat.",
-              },
-            ].map((item, i) => (
+            {ECOSYSTEM_STEPS.map((item, i) => (
               <div
                 key={i}
                 className="relative z-10 flex flex-col items-center text-center"
@@ -401,20 +338,7 @@ export default function Page(): React.ReactElement {
                 ca aceasta să afecteze factura ta.
               </p>
               <div className="space-y-6">
-                {[
-                  {
-                    title: "Dashboard Unificat",
-                    desc: "Vezi producția și consumul într-o singură aplicație intuitivă.",
-                  },
-                  {
-                    title: "Alertare Anomalii",
-                    desc: "Echipa noastră primește alerte instantanee dacă sistemul scade sub parametrii optimi.",
-                  },
-                  {
-                    title: "Rapoarte Periodice",
-                    desc: "Primești analize lunare detaliate despre economiile realizate și performanța tehnică.",
-                  },
-                ].map((item, i) => (
+                {MONITORING_FEATURES.map((item, i) => (
                   <div key={i} className="flex gap-4">
                     <div className="flex-shrink-0 w-6 h-6 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-500 flex items-center justify-center mt-1">
                       <CheckCircle2 className="h-4 w-4" />
@@ -499,24 +423,7 @@ export default function Page(): React.ReactElement {
           <div className="flex flex-col lg:flex-row gap-16 items-center">
             <div className="lg:w-1/2 order-2 lg:order-1">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {[
-                  {
-                    title: "Net Metering",
-                    desc: "Compensare surplus prin net metering direct pe factura de furnizare.",
-                  },
-                  {
-                    title: "Tarife Competitive",
-                    desc: "Beneficiezi de cele mai bune tarife pentru energia consumată noaptea.",
-                  },
-                  {
-                    title: "Facturare Unică",
-                    desc: "Facturare transparentă și simplificată pentru producție și consum.",
-                  },
-                  {
-                    title: "ROI Accelerat",
-                    desc: "Valorifici fiecare watt produs și reduci costul energiei din rețea.",
-                  },
-                ].map((item, i) => (
+                {SUPPLY_ECOSYSTEM_BENEFITS.map((item, i) => (
                   <div
                     key={i}
                     className="bg-amber-600/50 backdrop-blur-sm p-8 rounded-2xl border border-amber-400/30"
@@ -543,17 +450,9 @@ export default function Page(): React.ReactElement {
                 <div className="text-3xl font-black tracking-tighter">
                   ELECTROBRUM
                 </div>
-                {/* <div className="text-2xl font-light opacity-50">+</div>
-                <div className="text-3xl font-black tracking-tighter">
-                  YELLOWGRID
-                </div> */}
               </div>
               <ul className="space-y-4">
-                {[
-                  "Un singur partener pentru producție și furnizare",
-                  "Control total asupra fluxului de energie",
-                  "Monitorizare unificată producție + consum",
-                ].map((item, i) => (
+                {SUPPLY_ECOSYSTEM_BULLETS.map((item, i) => (
                   <li key={i} className="flex items-center gap-3 font-bold">
                     <div className="w-1.5 h-1.5 rounded-full bg-white" />
                     {item}
@@ -580,28 +479,12 @@ export default function Page(): React.ReactElement {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Ecosistem Complet",
-                desc: "Parteneriate pentru furnizare și valorificare inteligentă a energiei prin compensare și net metering.",
-                icon: <Zap className="h-8 w-8 text-amber-500" />,
-              },
-              {
-                title: "Monitorizare Post-Vânzare",
-                desc: "Parteneriate cu integratori de software pentru dashboard-uri unificate și alertare în timp real.",
-                icon: <LineChart className="h-8 w-8 text-amber-500" />,
-              },
-              {
-                title: "Echipamente de Top",
-                desc: "Colaborare directă cu producători mondiali (Huawei, Longi, Victron) pentru garanții extinse și suport tehnic.",
-                icon: <ShieldCheck className="h-8 w-8 text-amber-500" />,
-              },
-            ].map((partner, i) => (
+            {STRATEGIC_PARTNERSHIPS.map((partner, i) => (
               <div
                 key={i}
                 className="p-8 rounded-3xl border border-gray-100 dark:border-gray-800 bg-gray-50/30 dark:bg-gray-900/30 hover:shadow-xl transition-all"
               >
-                <div className="mb-6">{partner.icon}</div>
+                <div className="mb-6">{getIcon(partner.iconKey)}</div>
                 <h3 className="text-xl font-bold mb-4">{partner.title}</h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
                   {partner.desc}
@@ -626,62 +509,7 @@ export default function Page(): React.ReactElement {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Proiectare & Dimensionare",
-                desc: "Nu folosim șabloane. Dimensionăm sistemul pe baza consumului tău real și a orientării specifice a locației.",
-                features: [
-                  "Analiză consum orar",
-                  "Simulări producție PVSYST",
-                  "Optimizare umbrire",
-                ],
-              },
-              {
-                title: "Branșamente ANRE",
-                desc: "Gestionăm complet procesul de racordare la rețea și obținerea statutului de prosumator.",
-                features: [
-                  "Dosar tehnic complet",
-                  "Avize de racordare",
-                  "Certificat de urbanism",
-                ],
-              },
-              {
-                title: "Instalare & Punere în Funcțiune",
-                desc: "Echipe proprii și parteneri autorizați care respectă cele mai înalte standarde de siguranță.",
-                features: [
-                  "Protecții DC/AC incluse",
-                  "Împământare verificată",
-                  "Configurare invertor/baterie",
-                ],
-              },
-              {
-                title: "Monitorizare Post-Vânzare",
-                desc: "Includem monitorizarea activă în pachetul nostru. Nu ești singur după ce s-a montat sistemul.",
-                features: [
-                  "Alertare anomalii",
-                  "Rapoarte de producție",
-                  "Suport tehnic remote",
-                ],
-              },
-              {
-                title: "Audit & Optimizare",
-                desc: "Vrem ca omul să fie mulțumit de sistemul deja instalat, chiar dacă a fost montat de altă firmă.",
-                features: [
-                  "Termoviziune panouri",
-                  "Verificare conexiuni",
-                  "Upgrade firmware",
-                ],
-              },
-              {
-                title: "Mentenanță Preventivă",
-                desc: "Prevenim defecțiunile majore prin verificări periodice ale componentelor critice.",
-                features: [
-                  "Curățare panouri",
-                  "Strângere conexiuni",
-                  "Testare descărcătoare",
-                ],
-              },
-            ].map((service, i) => (
+            {SERVICES_GRID.map((service, i) => (
               <div
                 key={i}
                 className="group bg-white dark:bg-gray-900 p-10 rounded-3xl border border-gray-100 dark:border-gray-800 hover:border-amber-500 transition-all duration-500 shadow-sm hover:shadow-xl hover:shadow-amber-500/5 hover:-translate-y-1"
@@ -733,26 +561,7 @@ export default function Page(): React.ReactElement {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Sistem Rezidențial 6kWp",
-                location: "București, Ilfov",
-                stat: "ROI: 3.5 ani",
-                img: "bg-amber-100",
-              },
-              {
-                title: "Sistem Industrial 50kWp",
-                location: "Ploiești, Prahova",
-                stat: "Economie: 85%",
-                img: "bg-amber-200",
-              },
-              {
-                title: "Sistem Casa Verde 8kWp",
-                location: "Cluj-Napoca, Cluj",
-                stat: "Status: Finalizat",
-                img: "bg-amber-300",
-              },
-            ].map((project, i) => (
+            {FEATURED_PROJECTS.map((project, i) => (
               <div
                 key={i}
                 className="group bg-white dark:bg-gray-900 rounded-3xl overflow-hidden border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-xl transition-all"
@@ -797,48 +606,7 @@ export default function Page(): React.ReactElement {
             Portofoliu Proiecte Realizate
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              {
-                title: "Sistem Rezidențial 10kWp",
-                area: "Ilfov",
-                img: "bg-amber-100",
-              },
-              {
-                title: "Sistem Industrial 100kWp",
-                area: "Prahova",
-                img: "bg-amber-200",
-              },
-              {
-                title: "Sistem Rezidențial 5kWp",
-                area: "Cluj",
-                img: "bg-amber-300",
-              },
-              {
-                title: "Sistem Comercial 30kWp",
-                area: "Timiș",
-                img: "bg-amber-400",
-              },
-              {
-                title: "Sistem Rezidențial 15kWp",
-                area: "Brașov",
-                img: "bg-amber-500",
-              },
-              {
-                title: "Sistem Industrial 200kWp",
-                area: "Constanța",
-                img: "bg-amber-600",
-              },
-              {
-                title: "Sistem Rezidențial 8kWp",
-                area: "Iași",
-                img: "bg-amber-700",
-              },
-              {
-                title: "Sistem Comercial 40kWp",
-                area: "Dolj",
-                img: "bg-amber-800",
-              },
-            ].map((project, i) => (
+            {PORTFOLIO_GRID.map((project, i) => (
               <div
                 key={i}
                 className="group relative aspect-square overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-900 shadow-sm hover:shadow-xl transition-all"
@@ -883,24 +651,7 @@ export default function Page(): React.ReactElement {
           </div>
 
           <div className="max-w-4xl mx-auto space-y-4">
-            {[
-              {
-                q: "Cât durează instalarea unui sistem fotovoltaic?",
-                a: "Instalarea propriu-zisă durează de obicei 1-2 zile pentru un sistem rezidențial standard. Întregul proces, incluzând avizele și dosarul de prosumator, poate dura între 4 și 8 săptămâni.",
-              },
-              // {
-              //   q: "Ce se întâmplă dacă panourile produc mai multă energie decât consum?",
-              //   a: "Surplusul de energie este injectat în rețea. Prin parteneriatul nostru cu YellowGrid, acest surplus este compensat pe factura ta, ajutându-te să reduci costurile în perioadele cu producție scăzută.",
-              // },
-              {
-                q: "Este necesară curățarea periodică a panourilor?",
-                a: "Da, pentru un randament maxim recomandăm curățarea panourilor de 1-2 ori pe an, în funcție de zona în care locuiești. De asemenea, oferim servicii de mentenanță preventivă care includ această operațiune.",
-              },
-              {
-                q: "Oferiți suport pentru programul Casa Verde?",
-                a: "Absolut. Suntem instalator aprobat AFM și te ghidăm prin tot procesul de înscriere, depunere a documentelor și implementare a sistemului prin programul Casa Verde.",
-              },
-            ].map((item, i) => (
+            {FAQ_ITEMS.map((item, i) => (
               <details
                 key={i}
                 className="group bg-gray-50 dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 overflow-hidden"
@@ -938,15 +689,7 @@ export default function Page(): React.ReactElement {
             Echipamente de top pentru performanță garantată
           </p>
           <div className="flex flex-wrap justify-center items-center gap-12 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
-            {/* Using text placeholders since I don't have the SVGs */}
-            {[
-              "HUAWEI",
-              "LONGI",
-              "VICTRON",
-              "FRONIUS",
-              "SUNGROW",
-              "CANADIAN SOLAR",
-            ].map((brand, i) => (
+            {PARTNER_BRANDS.map((brand, i) => (
               <div
                 key={i}
                 className="text-2xl md:text-3xl font-black tracking-tighter text-gray-900 dark:text-white"
