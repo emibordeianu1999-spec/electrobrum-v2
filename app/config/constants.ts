@@ -2,7 +2,7 @@ export const CONTACT_INFO = {
   phone: "+40 737 764 365",
   phoneFormatted: "+40737764365",
   email: "web.electrobrum@gmail.com",
-  address: "Str. Pacii 2A, oraș Comănești, jud. Bacău",
+  address: "Str. Pacii 2A, loc. Comănești, jud. Bacău",
   workingDays: "Luni - Vineri",
   workingHours: "09:00 - 18:00",
 };

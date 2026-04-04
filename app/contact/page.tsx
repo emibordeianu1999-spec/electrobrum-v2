@@ -45,7 +45,7 @@ export default function ContactPage() {
         },
         body: JSON.stringify({
           ...data,
-          from_name: "Electrobrum Website",
+          from_name: "ELECTROBRUM ENERGY AUTOMATION Website",
           to_email: CONTACT_INFO.email,
         }),
       });
@@ -310,7 +310,7 @@ export default function ContactPage() {
                   Suport Tehnic Non-Stop pentru clienți
                 </h3>
                 <p className="text-amber-100 text-sm leading-relaxed mb-6">
-                  Clienții Electrobrum beneficiază de monitorizare activă și
+                  Clienții ELECTROBRUM ENERGY AUTOMATION beneficiază de monitorizare activă și
                   suport prioritar.
                 </p>
                 <Link

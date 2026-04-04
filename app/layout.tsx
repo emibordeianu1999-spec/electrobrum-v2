@@ -8,9 +8,13 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Electrobrum - Partenerul tău în energie",
+  title: "ELECTROBRUM ENERGY AUTOMATION - Partenerul tău în energie",
   description:
-    "Electrobrum oferă soluții complete pentru sisteme fotovoltaice, branșamente electrice și consultanță energetică.",
+    "ELECTROBRUM ENERGY AUTOMATION oferă soluții complete pentru sisteme fotovoltaice, branșamente electrice și consultanță energetică.",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

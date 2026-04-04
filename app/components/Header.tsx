@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X, Phone, Mail, MapPin } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 import { CONTACT_INFO } from "../config/constants";
+import { Logo } from "./Logo";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -65,10 +66,11 @@ const Header = () => {
       )}
 
       <div className="container mx-auto px-4 flex justify-between items-center">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="text-2xl font-black tracking-tighter text-amber-500 dark:text-amber-400">
-            ELECTROBRUM
-          </div>
+        <Link
+          href="/"
+          className="flex items-center gap-2 hover:opacity-90 transition-opacity"
+        >
+          <Logo />
         </Link>
 
         {/* Desktop Navigation */}
@@ -92,7 +94,7 @@ const Header = () => {
         </nav>
 
         {/* Mobile Actions */}
-        <div className="flex items-center gap-4 lg:hidden">
+        <div className="flex items-center gap-2 lg:hidden">
           <ThemeToggle />
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -118,9 +120,7 @@ const Header = () => {
       >
         {/* Mobile Menu Top Bar */}
         <div className="flex justify-between items-center px-4 py-6 border-b border-gray-100 dark:border-gray-900 bg-white dark:bg-gray-950">
-          <div className="text-2xl font-black tracking-tighter text-amber-500">
-            ELECTROBRUM
-          </div>
+          <Logo />
           <button
             onClick={() => setIsMenuOpen(false)}
             className="p-2 text-gray-900 dark:text-white"

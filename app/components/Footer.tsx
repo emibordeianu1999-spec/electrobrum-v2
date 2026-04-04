@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { CONTACT_INFO, SOCIAL_LINKS } from "../config/constants";
 import { FacebookIcon, WhatsAppIcon } from "./icons/SocialIcons";
+import { Logo } from "./Logo";
 
 const Footer = () => {
   return (
@@ -9,19 +10,20 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand Column */}
-          <div className="space-y-6">
-            <Link
-              href="/"
-              className="text-2xl font-black tracking-tighter text-gray-900 dark:text-white"
-            >
-              Electrobrum Energy Automation SRL
+          <div className="lg:col-span-2 space-y-6">
+            <Link href="/" className="hover:opacity-90 transition-opacity">
+              <Logo className="h-12" />
             </Link>
-            <p className="pt-4 text-sm leading-relaxed">
-              Partenerul tău tehnic care proiectează, monitorizează și
-              optimizează sisteme fotovoltaice pentru un viitor sustenabil.
+            <p className="pt-4 text-sm leading-relaxed max-w-sm">
+              ELECTROBRUM ENERGY AUTOMATION este partenerul tău de încredere în
+              tranziția către energia verde. Oferim soluții complete, de la
+              proiectare la mentenanță.
             </p>
-            <span className="text-sm">CUI: 46507754</span>
-            <p className="mt-1 text-sm">Reg. Com. J2022001233043</p>
+            <div className="flex flex-col">
+              <span className="text-sm">CUI: 46507754</span>
+              <span className="mt-1 text-sm">Reg. Com. J2022001233043</span>
+              <p className="mt-1 text-sm">Atestat ANRE: 18666/06.10.2022 (B)</p>
+            </div>
             <div className="flex gap-4">
               <a
                 href={SOCIAL_LINKS.facebook}
@@ -112,8 +114,8 @@ const Footer = () => {
 
         <div className="pt-8 border-t border-gray-200 dark:border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs">
           <p>
-            © {new Date().getFullYear()} Electrobrum. Toate drepturile
-            rezervate.
+            © {new Date().getFullYear()} ELECTROBRUM ENERGY AUTOMATION. Toate
+            drepturile rezervate.
           </p>
         </div>
       </div>

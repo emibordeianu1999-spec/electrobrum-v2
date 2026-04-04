@@ -270,7 +270,7 @@ export default function Page(): React.ReactElement {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-5xl font-black mb-6">
-              Ce fel de firmă este Electrobrum?
+              Ce fel de firmă este ELECTROBRUM ENERGY AUTOMATION?
             </h2>
             <p className="text-gray-600 dark:text-gray-400 text-lg">
               Piața fotovoltaică poate fi confuză. Iată cum ne diferențiem
@@ -308,7 +308,7 @@ export default function Page(): React.ReactElement {
             <div className="p-8 rounded-3xl border-2 border-amber-500 bg-amber-50/30 dark:bg-amber-900/10">
               <h3 className="text-2xl font-black mb-6 flex items-center gap-3 text-amber-600 dark:text-amber-500">
                 <div className="w-2 h-8 bg-amber-500 rounded-full" />
-                Electrobrum
+                ELECTROBRUM ENERGY AUTOMATION
               </h3>
               <p className="text-gray-500 dark:text-gray-400 mb-8">
                 Coordonăm întregul proiect: proiectare, achiziții, supervizare
@@ -340,7 +340,7 @@ export default function Page(): React.ReactElement {
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <h2 className="text-3xl md:text-5xl font-black mb-6 leading-tight">
-              Cum funcționează ecosistemul Electrobrum
+              Cum funcționează ecosistemul ELECTROBRUM ENERGY AUTOMATION
             </h2>
           </div>
 
@@ -352,7 +352,7 @@ export default function Page(): React.ReactElement {
               {
                 step: "1",
                 title: "Proiectare",
-                desc: "Electrobrum dimensionează sistemul pe baza consumului tău real.",
+                desc: "ELECTROBRUM ENERGY AUTOMATION dimensionează sistemul pe baza consumului tău real.",
               },
               {
                 step: "2",
@@ -532,7 +532,7 @@ export default function Page(): React.ReactElement {
             <div className="w-[95%] lg:w-1/2 order-1 lg:order-2">
               <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight">
                 Soluția completă pentru energie: <br />
-                Electrobrum + YellowGrid
+                ELECTROBRUM ENERGY AUTOMATION + YellowGrid
               </h2>
               <p className="text-xl text-amber-100 mb-10 leading-relaxed">
                 Împreună, oferim un ecosistem energetic complet - de la
@@ -878,7 +878,7 @@ export default function Page(): React.ReactElement {
             </h2>
             <p className="text-gray-600 dark:text-gray-400 text-lg">
               Tot ce trebuie să știi despre sistemele fotovoltaice și
-              colaborarea cu Electrobrum.
+              colaborarea cu ELECTROBRUM ENERGY AUTOMATION.
             </p>
           </div>
 
