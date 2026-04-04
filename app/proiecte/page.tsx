@@ -99,9 +99,9 @@ export default function ProiectePage() {
                         src={project.imageUrl}
                         alt={project.title}
                         fill
-                        className="object-cover transition-transform duration-1000 group-hover:scale-110"
+                        className="object-cover pt-12 sm:pt-10 transition-transform duration-1000 group-hover:scale-110"
                       />
-                      <div className="absolute top-6 left-6 z-10">
+                      <div className="absolute top-2 sm:top-16 left-6 z-10">
                         <span className="px-5 py-2 bg-amber-500 text-white text-xs font-black uppercase tracking-[0.2em] rounded-full shadow-xl">
                           {project.category}
                         </span>
@@ -135,12 +135,12 @@ export default function ProiectePage() {
                         </p>
 
                         {/* Tech Specs Grid */}
-                        <div className="grid grid-cols-2 gap-4 md:gap-6">
-                          <div className="flex items-start gap-4 p-4 rounded-3xl bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-800 shadow-sm">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
+                          <div className="flex items-center sm:items-start gap-4 p-4 rounded-3xl bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-800 shadow-sm">
                             <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0">
                               <Zap className="h-5 w-5 text-amber-500" />
                             </div>
-                            <div>
+                            <div className="min-w-0">
                               <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">
                                 Putere
                               </div>
@@ -150,11 +150,11 @@ export default function ProiectePage() {
                             </div>
                           </div>
 
-                          <div className="flex items-start gap-4 p-4 rounded-3xl bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-800 shadow-sm">
+                          <div className="flex items-center sm:items-start gap-4 p-4 rounded-3xl bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-800 shadow-sm">
                             <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0">
                               <Layers className="h-5 w-5 text-amber-500" />
                             </div>
-                            <div>
+                            <div className="min-w-0">
                               <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">
                                 Panouri
                               </div>
@@ -164,11 +164,11 @@ export default function ProiectePage() {
                             </div>
                           </div>
 
-                          <div className="flex items-start gap-4 p-4 rounded-3xl bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-800 shadow-sm">
+                          <div className="flex items-center sm:items-start gap-4 p-4 rounded-3xl bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-800 shadow-sm">
                             <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0">
                               <Cpu className="h-5 w-5 text-amber-500" />
                             </div>
-                            <div>
+                            <div className="min-w-0">
                               <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">
                                 Invertor
                               </div>
@@ -178,11 +178,11 @@ export default function ProiectePage() {
                             </div>
                           </div>
 
-                          <div className="flex items-start gap-4 p-4 rounded-3xl bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-800 shadow-sm">
+                          <div className="flex items-center sm:items-start gap-4 p-4 rounded-3xl bg-white dark:bg-gray-950 border border-gray-100 dark:border-gray-800 shadow-sm">
                             <div className="w-10 h-10 rounded-xl bg-amber-500/10 flex items-center justify-center shrink-0">
                               <Battery className="h-5 w-5 text-amber-500" />
                             </div>
-                            <div>
+                            <div className="min-w-0">
                               <div className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-1">
                                 Baterie
                               </div>
@@ -194,10 +194,10 @@ export default function ProiectePage() {
                         </div>
                       </div>
 
-                      <div className="mt-12 flex items-center justify-between border-t border-gray-100 dark:border-gray-800 pt-8">
+                      <div className="mt-12 flex flex-col sm:flex-row items-center justify-between gap-8 border-t border-gray-100 dark:border-gray-800 pt-8">
                         <Link
                           href={`/proiecte/${project.id}`}
-                          className="flex items-center gap-3 text-amber-500 font-black uppercase tracking-widest text-sm hover:gap-5 transition-all"
+                          className="w-full sm:w-auto flex items-center justify-center sm:justify-start gap-3 bg-amber-500 sm:bg-transparent text-white sm:text-amber-500 px-8 py-4 sm:p-0 rounded-2xl sm:rounded-none font-black uppercase tracking-widest text-sm hover:gap-5 transition-all shadow-xl shadow-amber-500/20 sm:shadow-none"
                         >
                           Cere detalii proiect{" "}
                           <ArrowRight className="h-5 w-5" />
